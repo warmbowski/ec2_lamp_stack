@@ -1,11 +1,12 @@
 == EC2 Lamp Stack Provisioning ==
-This repo is a basic setup for provisioning complete LAMP stack servers on EC2. It can provision multiple hosts with duplicate configurations. 
+This repo is a basic setup for provisioning complete LAMP stack servers on a base CentOS 6.5 image hosted on EC2. It can provision multiple hosts with duplicate configurations. 
 
 * make sure ansible and boto are installed 
-* add credentials to ~/.boto file
+* add aws credentials to ~/.boto file
   [Credentials]
   aws_access_key_id = REDACTED
   aws_secret_access_key = REDACTED
+* put your IAM public key in ~/.ssh/ansible_setup.pem and chmod 600
 * clone this repo and cd into project folder
 * run ansible-playbook -vv -i localhost, -e "type=lampservers" provision-ec2.yml 
 
