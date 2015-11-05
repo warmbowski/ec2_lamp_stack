@@ -1,0 +1,9 @@
+[webservers]
+web3
+
+[dbservers]
+web2
+
+[launched]
+52.32.246.41 ansible_ssh_private_key_file=~/.ssh/ansible_setup.pem
+52.33.37.11 ansible_ssh_private_key_file=~/.ssh/ansible_setup.pem

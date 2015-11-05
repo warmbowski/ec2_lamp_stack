@@ -1,0 +1,17 @@
+instance_type: t1.micro
+security_group: sg-f796e593
+image: ami-b6bdde86
+subnet_id: "subnet-fbb7f18c"
+region: us-west-2
+keypair: ansible_setup
+
+# ec2_keypair: "ansible_setup"
+# ec2_security_group: "sg-f796e593"
+# ec2_instance_type: "t2.micro"
+# ec2_image: "ami-fd585ecd"
+# ec2_subnet_id: "subnet-fbb7f18c"
+# ec2_region: "us-west-2"
+# ec2_tag_Name: "Webserver"
+# ec2_tag_Type: "webserver"
+# ec2_tag_Environment: "production"
+# ec2_volume_size: 16
