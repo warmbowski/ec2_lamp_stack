@@ -3,9 +3,11 @@ This repo is a basic setup for provisioning complete LAMP stack servers on a bas
 
 * make sure ansible and boto are installed 
 * add aws credentials to ~/.boto file
+  ```
   [Credentials]
   aws_access_key_id = REDACTED
   aws_secret_access_key = REDACTED
+  ```
 * put your IAM public key in ~/.ssh/ansible_setup.pem and chmod 600
 * clone this repo and cd into project folder
 * run ansible-playbook -vv -i localhost, site.yml 
