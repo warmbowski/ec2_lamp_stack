@@ -9,6 +9,8 @@ This repo is a basic setup for provisioning complete LAMP stack servers on a bas
 * put your IAM public key in ~/.ssh/ansible_setup.pem and chmod 600
 * clone this repo and cd into project folder
 * run ansible-playbook -vv -i localhost, site.yml 
+* after playbook is complete, go to ip address of loadbalancer
+* refresh to see load balancing
 
 
 ###Resources used creating this
