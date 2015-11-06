@@ -1,0 +1,5 @@
+---
+- include: provision-ec2_lamp.yml
+- include: configure-lamp.yml
+- include: provision-ec2_haproxy.yml
+- include: configure-haproxy.yml

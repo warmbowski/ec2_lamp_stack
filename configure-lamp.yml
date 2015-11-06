@@ -1,0 +1,10 @@
+---
+- name: apply common configuration to all nodes
+  hosts: launched
+  remote_user: root
+  # sudo: yes
+  gather_facts: True
+  roles:
+    - common
+    - db
+    - web
