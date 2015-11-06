@@ -1,0 +1,18 @@
+---
+- name: Gather facts from lamp hosts
+  hosts: launched
+  remote_user: root
+  # sudo: yes
+  gather_facts: True
+  tasks: [ ]
+
+- name: configure haproxy host
+  hosts: lbservers
+  remote_user: root
+  # sudo: yes
+  gather_facts: True
+  pre_tasks:
+    - include_vars: group_vars/lbservers
+  roles:
+    - common
+    - ha

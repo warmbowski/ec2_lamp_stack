@@ -1,0 +1,33 @@
+---
+- name: Provision a LAMP node on EC2
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  tags: provisioning
+  pre_tasks:
+    - include_vars: ec2_vars/lampservers
+  tasks:
+    - name: Launch new ec2 instances
+      local_action: ec2
+        count=2
+        instance_tags="Name=LAMPInstance"
+        group_id={{ security_group }}
+        instance_type={{ instance_type}}
+        image={{ image }}
+        vpc_subnet_id={{ subnet_id }}
+        wait=true region={{ region }}
+        keypair={{ keypair }}
+      register: ec2
+
+    - name: Add instance to local host group
+      local_action: lineinfile dest=hosts regexp="{{ item.public_ip }}" insertafter="^\[launched\]" state=present line="{{ item.public_ip }} ansible_ssh_private_key_file=~/.ssh/{{ keypair }}.pem"
+      with_items: ec2.instances
+      #"
+
+    - name: add ec2 instance to hosts
+      add_host: name={{ item.public_ip }} ansible_ssh_private_key_file=~/.ssh/{{ keypair }}.pem groups=launched
+      with_items: ec2.instances
+
+    - name: Wait for SSH to come up
+      local_action: wait_for host={{ item.public_ip }} port=22 delay=60 timeout=320 state=started
+      with_items: ec2.instances
